@@ -1,0 +1,187 @@
+﻿<!DOCTYPE html>
+<html class="no-js" lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>@Html.Raw(ViewBag.Title)</title>
+    <meta name="description" content="@(Html.Raw(ViewBag.Description))">
+    <meta name="keywords" content="@(Html.Raw(ViewBag.Keywords))">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="icon" href="@Url.Content(@ViewBag.Favicon)" />
+    <!-- Place favicon.ico in the root directory -->
+    <!-- all css here -->
+    <link href="~/Content/style.css" rel="stylesheet" />
+    <link href="~/Content/css/animate.css" rel="stylesheet" />
+    <link href="~/Content/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/css/font-awesome.min.css" rel="stylesheet" />
+    <link href="~/Content/css/meanmenu.min.css" rel="stylesheet" />
+    <link href="~/Content/css/owl.carousel.css" rel="stylesheet" />
+    <link href="~/Content/css/responsive.css" rel="stylesheet" />
+    <link href="~/Content/css/shortcode/shortcodes.css" rel="stylesheet" />
+    <script src="~/Content/js/vendor/modernizr-2.8.3.min.js"></script>
+
+</head>
+<body style="background-color: #f0f0f0;">
+    <!--[if lt IE 8]>
+        <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+    <![endif]-->
+    <!-- Add your site or application content here -->
+    <!-- header-start -->
+    <div id="preloader"></div>
+    <header>
+        <div class="header-area " id="main_h"     style="background-color: white;" >
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-3 col-md-3 col-sm-8">
+                        <div class="logo">
+                            <a href="@Url.Action("","")"><img  style="max-height: 70px; margin-top: -15px; width: auto;" src="@Url.Content(@ViewBag.Logo)" alt="Blog @ViewBag.Title" /></a>
+                        </div>
+                    </div>
+                    <div class="col-lg-7 hidden-sm hidden-xs col-md-7">
+                        <div class="mainmenu">
+                            <nav>
+                                <ul>
+                                    <li>
+                                        <a href="@Url.Action("","")"><i class="fa fa-home"></i> Anasayfa</a>
+                                    </li>
+                                    <li>
+                                        <a href="~/About"><i class="fa fa-user"></i> Hakkımda</a>
+                                    </li>
+                                    <li>
+                                        <a href="~/Contact"><i class="fa fa-calendar"></i> İletişim</a>
+                                    </li>
+
+                                    <li>
+                                        <a href="~/Admin"><i class="fa fa-sign-in"></i> Yazar Girişi</a>
+                                    </li>
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
+                   
+                </div>
+            </div>
+            <!-- mobile-menu-area-start -->
+            <div class="mobile-menu-area visible-xs visible-sm">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="mobile-menu">
+                                <nav id="mobile-menu">
+                                    <ul>
+                                        <li>
+                                            <a href="@Url.Action("","")">Anasayfa</a>
+                                        </li>
+
+                                        <li>
+                                            <a href="/About">Hakkımda</a>
+                                        </li>
+                                        <li>
+                                            <a href="/Connection">İletişim</a>
+                                        </li>
+
+                                        <li>
+                                            <a href="/Login">Yazar Girişi</a>
+                                        </li>
+                                    </ul>
+                                </nav>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- mobile-menu-area-end -->
+        </div>
+    </header>
+    <!-- header-end -->
+    <!-- page-header-area-start -->
+    <div class="page-header-area ptb-140">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="page-header-text text-center text-white">
+                        <h2 class="page-title">@ViewBag.Title</h2>
+                        <ul class="breadcrumb">
+                            <li class="active"><span>@ViewBag.Description</span></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- page-header-area-end -->
+    <!-- post-content-area-start -->
+    <div class="post-content-area ptb-80">
+
+        @RenderBody()
+
+    </div>
+    <!-- post-content-area-end -->
+
+    <!-- footer-start -->
+    <footer>
+        <div class="footer-area footer-bg ptb-30">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
+                        <div class="footer-widget">
+                            <div class="footer-title mb-30">
+                                <h3>Site Hakkında <i class="fa fa-long-arrow-right"></i></h3>
+                            </div>
+                            <div class="widget-text">
+                                <p> @ViewBag.Description</p>
+                            </div>
+                            <div class="footer-newsletter mt-30">
+                                <form action="#">
+                                    <input type="text" placeholder="Enter your email" />
+                                    <button><i class="fa fa-paper-plane"></i></button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- footer-end -->
+    <!-- copyright-area-start -->
+    <div class="copyright-area ptb-30 black-bg">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6 col-md-6 col-sm-7 col-xs-12">
+                    <div class="copyright-left">
+                        <p>� Copyright 2020 - Ferit Gezgil. All Rights Reserved.</p>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-6 col-sm-5 col-xs-12">
+                    <div class="copyright-right">
+                        <p>Designed & Developed by : <a href="#">Ferit Gezgil</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- copyright-area-end -->
+    <!-- all js here -->
+    <!-- main-js -->
+    <script src="~/Content/js/vendor/jquery-1.12.0.min.js"></script>
+    <!-- bootstrap.min.js -->
+    <script src="~/Content/js/bootstrap.min.js"></script>
+    <!-- owl.carousel.min.js -->
+    <script src="~/Content/js/owl.carousel.min.js"></script>
+    <!-- jquery.scrollUp.js -->
+    <script src="~/Content/js/jquery.scrollUp.js"></script>
+    <!-- jquery.waypoints.min.js -->
+    <script src="~/Content/js/jquery.waypoints.min.js"></script>
+    <!-- jquery.meanmenu.js -->
+    <script src="~/Content/js/jquery.meanmenu.js"></script>
+    <!-- jquery.sticky.js -->
+    <script src="~/Content/js/jquery.sticky.js"></script>
+    <!-- plugins.js -->
+    <script src="~/Content/js/plugins.js"></script>
+    <!-- main.js -->
+    <script src="~/Content/js/main.js"></script>
+</body>
+</html>
+

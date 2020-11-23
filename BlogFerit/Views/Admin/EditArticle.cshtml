@@ -1,0 +1,82 @@
+﻿@model BlogFerit.DataEntities.Article
+@{
+    ViewBag.Title = "CreateArticle";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<div class="x_panel">
+    <div class="x_title">
+        <h2>Yazı yönetimi : <small>Yazı Düzenle</small></h2>
+
+        <div class="clearfix"></div>
+    </div>
+    <div class="x_content">
+        <div id="alerts"></div>
+
+
+        <form id="form1" method="post" action="~/Admin/EditArticle" enctype="multipart/form-data">
+
+            <div class="item form-group">
+                <div class="col-md-12 col-sm-12 ">
+                    <label for="sel1">Başlık giriniz:</label>
+                    <input type="text" name="Title" id="first-name" placeholder="" required="required"  value="@Model.Title" class="form-control ">
+                </div>
+            </div>
+
+
+            <div class="item form-group">
+                <div class="col-md-12 col-sm-12 ">
+                    <input type="hidden" name="Author" value="@Model.Author">
+                    <input type="hidden" name="ArticleDate" value="@Model.ArticleDate">
+                    <input type="hidden" name="ReadingCount" value="@Model.ReadingCount">
+                    <input type="hidden" name="IsActive" value="@Model.IsActive">
+                    <input type="hidden" name="IsDelete" value="@Model.IsDelete">
+                    <input type="hidden" name="ImageUrl" value="@Model.ImageUrl">
+                    <input type="hidden" name="Id" value="@Model.Id">
+                </div>
+            </div>
+
+            <div class="item form-group">
+                <div class="col-md-12 col-sm-12 ">
+                    <label for="sel1">Anahtar kelimeler (aralarına virgül koyarak):</label>
+                    <input type="text" name="Tags" id="first-name" placeholder="" value="@Model.Tags" required="required" class="form-control ">
+                </div>
+            </div>
+
+            <div class="item form-group">
+                <div class="col-md-12 col-sm-12 ">
+                    <label for="sel1">Yazı öne çıkar resim (Önerilen Ölçü 458x375):</label>
+                    <input type="file" name="postedFile" id="first-name" accept="image/png, image/jpeg" value="@Model.ImageUrl" class="form-control"
+                           style="padding: .375rem .0rem; border-radius: .25rem;">
+                </div>
+            </div>
+
+            <div class="item form-group">
+                <div class="col-md-12 col-sm-12 ">
+                    <div class="form-group">
+                        <label for="sel1">Kategori:</label>
+                        <select name="CategoryName" class="form-control" value="@Model.CategoryName" id="sel1">
+                            <option>Turkish</option>
+                            <option>English</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="item form-group">
+                <div class="col-md-12 col-sm-12 ">
+                    <label for="sel1">İçerik:</label>
+                    <textarea name="Content"  class="resizable_textarea form-control" style="margin-top: 0px; margin-bottom: 0px; height: 384px;">@Model.Content</textarea>
+                </div>
+            </div>
+
+            <br />
+            <div class="item form-group">
+                <div class="col-md-12 col-sm-12 ">
+                    <input type="submit" class="btn btn-info btn-lg">
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

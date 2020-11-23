@@ -1,0 +1,114 @@
+﻿@model IEnumerable<BlogFerit.DataEntities.Article>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+
+<link href="https://cdn.datatables.net/1.10.22/css/jquery.dataTables.min.css" rel="stylesheet" />
+<script src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"></script>
+
+<div class="x_panel">
+    <div class="x_title">
+        <h2>Silinmiş Yazılar : <small>@Model.ToList().Count adet kayıt listeleniyor.</small></h2>
+        <div class="clearfix"></div>
+    </div>
+    <div class="x_content">
+
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Başlık</th>
+                    <th>Kategori</th>
+                    <th>Eklenme Tarihi</th>
+                    <th>Okunma</th>
+                    <th>İşlemler</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <th scope="row">@item.Id</th>
+                        <th>@item.Title</th>
+                        <th>@item.CategoryName</th>
+                        <th>@item.ArticleDate</th>
+                        <th>@item.ReadingCount</th>
+                        <th>
+                            <a onclick="GeriAl(@item.Id)" class="btn btn-success btn-sm" data-toggle="modal" style="color:white;" data-target="#showArticle"><i class="fa fa-eye"></i> Geri Al</a>
+
+                            <script type="text/javascript">
+                                function GeriAl(id) {
+                                    var link = "UnDeleteArticle/" + id;
+                                    jQuery("#UndeleteLink").attr("href", link);
+                                    jQuery("#UndeleteArticle").modal();
+                                }
+
+                            </script>
+
+                        </th>
+                    </tr>
+                }
+
+
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
+<div class="x_panel">
+    <div class="x_title">
+        <h2>Çöp kutusunu boşalt : <small>@Model.ToList().Count adet kayıt listeleniyor.</small></h2>
+        <div class="clearfix"></div>
+    </div>
+    <div class="x_content">
+        <a onclick="deleteTrash('true')" class="btn btn-info"  data-toggle="modal" style="color:white;" data-target="#deleteTrash"><i class="fa fa-trash-o"></i> Çöpü Boşalt</a>
+
+    
+        <script type="text/javascript">
+            function deleteTrash(check) {
+                var link = "deleteTrash/?check=" + check;
+                jQuery("#deleteLink").attr("href", link);
+                jQuery("#deleteTrash").modal();
+            }
+        </script>
+    </div>
+</div>
+
+<div id="UndeleteArticle" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header" style="background-color:green;color:white;">
+                <h4 class="modal-title">Yazı geri alma ekranı</h4>
+            </div>
+            <div class="modal-body">
+                <p>Kaydı geri almak için onaylayınız.</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-dismiss="modal">Vazgeç</button>
+                <a class="btn btn-primary" id="UndeleteLink" href="#"><i class="fa fa-check"> Geri Al</i></a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="deleteTrash" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header" style="background-color:green;color:white;">
+                <h4 class="modal-title">Çöp kutusu boşaltılacak</h4>
+            </div>
+            <div class="modal-body">
+                <p>Bu işlemin geri dönüşü yoktur. Kayıtları silmek için onaylayınız.</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-dismiss="modal">Vazgeç</button>
+                <a class="btn btn-primary" id="deleteLink" href="#"><i class="fa fa-check"> Tümünü Sil</i></a>
+            </div>
+        </div>
+    </div>
+</div>

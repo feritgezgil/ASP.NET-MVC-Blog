@@ -1,0 +1,80 @@
+﻿
+@{
+    ViewBag.Title = "CreateArticle";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>CreateArticle</h2>
+
+<div class="x_panel">
+    <div class="x_title">
+        <h2>Yazı yönetimi : <small>Yeni Ekle</small></h2>
+
+        <div class="clearfix"></div>
+    </div>
+    <div class="x_content">
+        <div id="alerts"></div>
+
+
+        <form id="form1" method="post" action="~/Admin/CreateArticle" enctype="multipart/form-data">
+
+            <div class="item form-group">
+                <div class="col-md-12 col-sm-12 ">
+                    <label for="sel1">Başlık giriniz:</label>
+                    <input type="text" name="Title" id="first-name" placeholder="" required="required" class="form-control ">
+                </div>
+            </div>
+
+
+            <div class="item form-group">
+                <div class="col-md-12 col-sm-12 ">
+
+                    <input type="hidden" name="Author" value="@ViewBag.UserName">
+                </div>
+            </div>
+
+            <div class="item form-group">
+                <div class="col-md-12 col-sm-12 ">
+                    <label for="sel1">Anahtar kelimeler (aralarına virgül koyarak):</label>
+                    <input type="text" name="Tags" id="first-name" placeholder="" required="required" class="form-control ">
+                </div>
+            </div>
+
+
+            <div class="item form-group">
+                <div class="col-md-12 col-sm-12 ">
+                    <label for="sel1">Yazı öne çıkar resim (Önerilen Ölçü 458x375):</label>
+                    <input type="file" name="postedFile" id="first-name" required="required" class="form-control"
+                           style="padding: .375rem .0rem; border-radius: .25rem;">
+                </div>
+            </div>
+
+            <div class="item form-group">
+                <div class="col-md-12 col-sm-12 ">
+                    <div class="form-group">
+                        <label for="sel1">Kategori:</label>
+                        <select name="CategoryName" class="form-control" id="sel1">
+                            <option>Turkish</option>
+                            <option>English</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="item form-group">
+                <div class="col-md-12 col-sm-12 ">
+                    <label for="sel1">İçerik:</label>
+                    <textarea name="Content" class="resizable_textarea form-control" placeholder="" style="margin-top: 0px; margin-bottom: 0px; height: 384px;"></textarea>
+                </div>
+            </div>
+
+            <br />
+            <div class="item form-group">
+                <div class="col-md-12 col-sm-12 ">
+                    <input type="submit" class="btn btn-info btn-lg">
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

@@ -1,0 +1,15 @@
+D:\Dosylarım\Desktop\BlogFerit\BlogFerit\BlogFerit.DAL\bin\Debug\BlogFerit.DAL.dll.config
+D:\Dosylarım\Desktop\BlogFerit\BlogFerit\BlogFerit.DAL\bin\Debug\BlogFerit.DAL.dll
+D:\Dosylarım\Desktop\BlogFerit\BlogFerit\BlogFerit.DAL\bin\Debug\BlogFerit.DAL.pdb
+D:\Dosylarım\Desktop\BlogFerit\BlogFerit\BlogFerit.DAL\bin\Debug\BlogFerit.DataEntities.dll
+D:\Dosylarım\Desktop\BlogFerit\BlogFerit\BlogFerit.DAL\bin\Debug\EntityFramework.dll
+D:\Dosylarım\Desktop\BlogFerit\BlogFerit\BlogFerit.DAL\bin\Debug\EntityFramework.SqlServer.dll
+D:\Dosylarım\Desktop\BlogFerit\BlogFerit\BlogFerit.DAL\bin\Debug\BlogFerit.DataEntities.pdb
+D:\Dosylarım\Desktop\BlogFerit\BlogFerit\BlogFerit.DAL\bin\Debug\BlogFerit.DataEntities.dll.config
+D:\Dosylarım\Desktop\BlogFerit\BlogFerit\BlogFerit.DAL\bin\Debug\EntityFramework.xml
+D:\Dosylarım\Desktop\BlogFerit\BlogFerit\BlogFerit.DAL\bin\Debug\EntityFramework.SqlServer.xml
+D:\Dosylarım\Desktop\BlogFerit\BlogFerit\BlogFerit.DAL\obj\Debug\BlogFerit.DAL.csprojAssemblyReference.cache
+D:\Dosylarım\Desktop\BlogFerit\BlogFerit\BlogFerit.DAL\obj\Debug\BlogFerit.DAL.csproj.CoreCompileInputs.cache
+D:\Dosylarım\Desktop\BlogFerit\BlogFerit\BlogFerit.DAL\obj\Debug\BlogFerit.DAL.csproj.CopyComplete
+D:\Dosylarım\Desktop\BlogFerit\BlogFerit\BlogFerit.DAL\obj\Debug\BlogFerit.DAL.dll
+D:\Dosylarım\Desktop\BlogFerit\BlogFerit\BlogFerit.DAL\obj\Debug\BlogFerit.DAL.pdb

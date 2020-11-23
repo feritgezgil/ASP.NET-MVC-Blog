@@ -1,0 +1,143 @@
+﻿@model IEnumerable<BlogFerit.DataEntities.Categories>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+
+<link href="https://cdn.datatables.net/1.10.22/css/jquery.dataTables.min.css" rel="stylesheet" />
+<script src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"></script>
+
+<div class="x_panel">
+    <div class="x_title">
+        <h2>Kategori yönetimi : <small>@Model.ToList().Count adet kayıt listeleniyor.</small></h2>
+        <ul class="nav navbar-right panel_toolbox">
+            <li>
+                <a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+            </li>
+            <li>
+                <a class="close-link"><i class="fa fa-close"></i></a>
+            </li>
+        </ul>
+        <div class="clearfix"></div>
+    </div>
+    <div class="x_content">
+
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Kategori Adı</th>
+                    <th>İşlemler</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <th scope="row">@item.Id</th>
+                        <th>@item.CategoryName</th>
+                        <th>
+                            <a href="@Url.Action("EditCategory","Admin", new { id = @item.Id })" class="btn btn-info btn-sm" style="color:white;"><i class="fa fa-pencil"></i> Düzenle</a>
+
+                            @if (@item.IsDelete == true)
+                            {
+                                <a onclick="Goster(@item.Id)" class="btn btn-danger btn-sm" data-toggle="modal" style="color:white;" data-target="#showArticle"><i class="fa fa-eye"></i> Göster</a>
+                            }
+                            else
+                            {
+                                <a onclick="Gizle(@item.Id)" class="btn btn-warning btn-sm" data-toggle="modal" style="color:white;" data-target="#hideArticle"><i class="fa fa-eye-slash"></i> Gizle</a>
+
+                            }
+
+                            <script type="text/javascript">
+
+                            function Gizle(id) {
+                                var link = "hideCategory/" + id;
+                                jQuery("#hideLink").attr("href", link);
+                                jQuery("#hideCategory").modal();
+                            }
+                            function Goster(id) {
+                                var link = "showCategory/" + id;
+                                jQuery("#showLink").attr("href", link);
+                                jQuery("#showCategory").modal();
+                            }
+
+                            </script>
+                        </th>
+
+
+                    </tr>
+                }
+
+
+            </tbody>
+        </table>
+
+    </div>
+</div>
+
+
+<div id="showCategory" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header" style="background-color:green;color:white;">
+                <h4 class="modal-title">Kategori Eklenecek</h4>
+            </div>
+            <div class="modal-body">
+                <p>Kaydı eklemek için onaylayın.</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-dismiss="modal">Vazgeç</button>
+                <a class="btn btn-primary" id="showLink" href="#"><i class="fa fa-check"> Ekle</i></a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="hideCategory" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header" style="background-color:red;color:white;">
+                <h4 class="modal-title">Kategori sistemden silinecek</h4>
+            </div>
+            <div class="modal-body">
+                <p>Bu ilem geri alınamaz. Kaydı silmek için onaylayın.</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-dismiss="modal">Vazgeç</button>
+                <a class="btn btn-primary" id="hideLink" href="#"><i class="fa fa-check"> Sil</i></a>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="x_panel">
+    <div class="x_title">
+        <h2>Kategori yönetimi : <small>Yeni kategori ekle</small></h2>
+
+        <div class="clearfix"></div>
+    </div>
+    <div class="x_content">
+        <div id="alerts"></div>
+
+
+        <form id="form1" method="post" action="~/Admin/AddCategory" enctype="multipart/form-data">
+            <div class="item form-group">
+                <div class="col-md-12 col-sm-12 ">
+                    <label for="sel1">Yeni kategori Adı:</label>
+                    <input type="text" name="CategoryName" id="first-name" placeholder="" required="required" value="" class="form-control ">
+                </div>
+            </div>
+
+            <div class="item form-group">
+                <div class="col-md-12 col-sm-12 ">
+                    <input type="submit" class="btn btn-success btn-lg">
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

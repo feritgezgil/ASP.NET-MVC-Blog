@@ -1,0 +1,176 @@
+﻿@model IEnumerable<BlogFerit.DataEntities.Article>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+
+<link href="https://cdn.datatables.net/1.10.22/css/jquery.dataTables.min.css" rel="stylesheet" />
+<script src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"></script>
+
+<div class="x_panel">
+    <div class="x_title">
+        <h2>Yazılar : <small>@Model.ToList().Count adet kayıt listeleniyor.</small></h2>
+        <ul class="nav navbar-right panel_toolbox">
+            <li>
+                <a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+            </li>
+            @*<li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    <a class="dropdown-item" href="#">Settings 1</a>
+                    <a class="dropdown-item" href="#">Settings 2</a>
+                </div>
+            </li>*@
+            <li>
+                <a class="close-link"><i class="fa fa-close"></i></a>
+            </li>
+        </ul>
+        <div class="clearfix"></div>
+    </div>
+    <div class="x_content">
+
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Başlık</th>
+                    <th>Kategori</th>
+                    <th>Eklenme Tarihi</th>
+                    <th>Okunma</th>
+                    <th>İşlemler</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                <tr>
+                    <th scope="row">@item.Id</th>
+                    <th>@item.Title</th>
+                    <th>@item.CategoryName</th>
+                    <th>@item.ArticleDate</th>
+                    <th>@item.ReadingCount</th>
+                    <th>
+                        <a href="@Url.Action("EditArticle","Admin", new { id = @item.Id })" class="btn btn-info btn-sm" style="color:white;"><i class="fa fa-pencil"></i> Düzenle</a>
+                        <a onclick="Sil(@item.Id)" class="btn btn-danger btn-sm" data-toggle="modal" style="color:white;" data-target="#deleteArticle"><i class="fa fa-trash-o"></i> Sil</a>
+
+                        @if (@item.IsActive == false)
+                        {
+                            <a onclick="Goster(@item.Id)" class="btn btn-danger btn-sm" data-toggle="modal" style="color:white;" data-target="#showArticle"><i class="fa fa-eye"></i> Göster</a>
+                        }
+                        else
+                        {
+                            <a onclick="Gizle(@item.Id)" class="btn btn-warning btn-sm" data-toggle="modal" style="color:white;" data-target="#hideArticle"><i class="fa fa-eye-slash"></i> Gizle</a>
+
+                        }
+
+                        <script type="text/javascript">
+                            function Sil(id) {
+                                var link = "Admin/DeleteArticle/" + id;
+                                jQuery("#deleteLink").attr("href", link);
+                                jQuery("#deleteArticle").modal();
+                            }
+
+                            function GeriAl(id) {
+                                var link = "Admin/UnDeleteArticle/" + id;
+                                jQuery("#UndeleteLink").attr("href", link);
+                                jQuery("#UndeleteArticle").modal();
+                            }
+
+                            function Gizle(id) {
+                                var link = "Admin/hideArticle/" + id;
+                                jQuery("#hideLink").attr("href", link);
+                                jQuery("#hideArticle").modal();
+                            }
+                            function Goster(id) {
+                                var link = "Admin/showArticle/" + id;
+                                jQuery("#showLink").attr("href", link);
+                                jQuery("#showArticle").modal();
+                            }
+
+                        </script>
+                    </th>
+
+
+                </tr>
+                }
+
+
+            </tbody>
+        </table>
+
+    </div>
+</div>
+
+<div id="deleteArticle" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header" style="background-color:red;color:white;">
+                <h4 class="modal-title">Yazı silme ekranı</h4>
+            </div>
+            <div class="modal-body">
+                <p>Kaydı silmek için onaylayınız.</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-dismiss="modal">Vazgeç</button>
+                <a class="btn btn-danger" id="deleteLink" href="#" ><i class="fa fa-trash-o"> Sil</i></a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="UndeleteArticle" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header" style="background-color:green;color:white;">
+                <h4 class="modal-title">Yazı geri alma ekranı</h4>
+            </div>
+            <div class="modal-body">
+                <p>Kaydı geri almak için onaylayınız.</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-dismiss="modal">Vazgeç</button>
+                <a class="btn btn-primary" id="UndeleteLink" href="#"><i class="fa fa-check"> Geri Al</i></a>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div id="showArticle" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header" style="background-color:green;color:white;">
+                <h4 class="modal-title">Yazı sitede gösterilecek</h4>
+            </div>
+            <div class="modal-body">
+                <p>Kaydı göstermek için onaylayın.</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-dismiss="modal">Vazgeç</button>
+                <a class="btn btn-primary" id="showLink" href="#"><i class="fa fa-check"> Göster</i></a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="hideArticle" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header" style="background-color:red;color:white;">
+                <h4 class="modal-title">Yazı sitede gizlenecek</h4>
+            </div>
+            <div class="modal-body">
+                <p>Kaydı gizlemek için onaylayın.</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-dismiss="modal">Vazgeç</button>
+                <a class="btn btn-primary" id="hideLink" href="#"><i class="fa fa-check"> Gizle</i></a>
+            </div>
+        </div>
+    </div>
+</div>

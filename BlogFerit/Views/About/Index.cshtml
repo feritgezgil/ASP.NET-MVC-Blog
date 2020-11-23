@@ -1,0 +1,56 @@
+﻿@model BlogFerit.DataEntities.Author
+@{ Layout = "~/Views/Shared/_Layout.cshtml"; }
+<!-- post-content-area-start -->
+<div class="post-content-area ptb-80 standard-post">
+    <div class="container">
+        <div class="row" style="background-color: white;">
+            <div class="col-lg-9 col-md-9 col-sm-12 col-xs-12">
+                <div class="section-title text-center">
+                    <h4 class="text-uppercase">Hakkımda</h4>
+                    <h3>@Model.NameSurname</h3>
+                    <div class="author-img-2">
+                        <img src="@Model.ImageUrl" alt="" />
+                    </div>
+                </div>
+                <div class="post-top">
+                    <div class="post-top-info">
+                        <p>@Html.Raw(@Model.AuthorAbout)</p>
+                    </div>
+
+                    <div class="feature-post-btn mtb-40">
+                        <ul>
+                            <li><a href="#">@Model.Email</a></li>
+                            <li><a href="#">@Model.Phone</a></li>
+                        </ul>
+                    </div>
+                    <div class="post-top-footer">
+                        <div class="post-top-social floatright">
+                            <span>Share:</span>
+                            <a href="#"><i class="fa fa-facebook"></i></a>
+                            <a href="#"><i class="fa fa-twitter"></i></a>
+                            <a href="#"><i class="fa fa-instagram"></i></a>
+                            <a href="#"><i class="fa fa-google-plus"></i></a>
+                        </div>
+                    </div>
+                </div>
+               
+            </div>
+
+            <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
+
+                <div class="sidebar-area-standard">
+
+                    @Html.Action("Categories", "Home")
+
+                    @Html.Action("Advertisement", "Home")
+
+                    @Html.Action("TopArticle", "Home")
+
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+</div>
+<!-- post-content-area-end -->

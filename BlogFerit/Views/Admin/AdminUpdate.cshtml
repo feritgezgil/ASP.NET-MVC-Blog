@@ -1,0 +1,106 @@
+﻿@model BlogFerit.DataEntities.Author
+@{
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+
+<div class="x_panel">
+    <div class="x_title">
+        <h2>Yönetici ayarları</h2>
+        <div class="clearfix"></div>
+    </div>
+     <div class="x_content">
+
+        <form id="form1" method="post" action="~/Admin/AdminUpdate" enctype="multipart/form-data">
+
+            <div class="item form-group">
+                <div class="col-md-12 col-sm-12 ">
+                    <input type="hidden" name="Id" value="@Model.Id">
+                    <input type="hidden" name="IsActive" value="@Model.IsActive">
+                    <input type="hidden" name="IsDelete" value="@Model.IsDelete">
+                    <input type="hidden" name="Role" value="@Model.Role">
+                    <input type="hidden" name="ImageUrl" value="@Model.ImageUrl">
+                </div>
+            </div>
+
+            <div class="item form-group">
+                <div class="col-md-12 col-sm-12 ">
+                    <label for="sel1">İsim:</label>
+                    <input type="text" name="NameSurname" id="first-name" placeholder="" required="required" value="@Model.NameSurname" class="form-control ">
+                </div>
+            </div>
+
+            <div class="item form-group">
+                <div class="col-md-12 col-sm-12 ">
+                    <label for="sel1"> Yazar hakkında:</label>
+                    <textarea name="AuthorAbout" class="resizable_textarea form-control" style="margin-top: 0px; margin-bottom: 0px; height: 384px;">@Model.AuthorAbout</textarea>
+                </div>
+            </div>
+
+            <div class="item form-group">
+                <div class="col-md-12 col-sm-12 ">
+                    <label for="sel1">Yazar profil resmi :</label>
+                    <input type="file" name="postedFile" id="first-name" accept="image/png, image/jpeg" value="@Model.ImageUrl" class="form-control"
+                           style="padding: .375rem .0rem; border-radius: .25rem;">
+                </div>
+            </div>
+
+            <div class="item form-group">
+                <div class="col-md-12 col-sm-12 ">
+                    <label for="sel1">E-Posta:</label>
+                    <input type="text" name="Email" id="first-name" placeholder="" required="required" value="@Model.Email" class="form-control ">
+                </div>
+            </div>
+
+            <div class="item form-group">
+                <div class="col-md-12 col-sm-12 ">
+                    <label for="sel1">Şifre:</label>
+                    <input type="text" name="Password" id="first-name" placeholder="" required="required" value="@Model.Password" class="form-control ">
+                </div>
+            </div>
+            <div class="item form-group">
+                <div class="col-md-12 col-sm-12 ">
+                    <label for="sel1">Github Url:</label>
+                    <input type="text" name="GithubUrl" id="first-name" placeholder="" required="required" value="@Model.GithubUrl" class="form-control ">
+                </div>
+            </div>
+
+
+            <div class="item form-group">
+                <div class="col-md-12 col-sm-12 ">
+                    <label for="sel1">Linkedin Url:</label>
+                    <input type="text" name="LinkedinUrl" id="first-name" placeholder="" required="required" value="@Model.LinkedinUrl" class="form-control ">
+                </div>
+            </div>
+
+            <div class="item form-group">
+                <div class="col-md-12 col-sm-12 ">
+                    <label for="sel1">Facebook Url:</label>
+                    <input type="text" name="FacebookUrl" id="first-name" placeholder="" required="required" value="@Model.FacebookUrl" class="form-control ">
+                </div>
+            </div>
+
+            <div class="item form-group">
+                <div class="col-md-12 col-sm-12 ">
+                    <label for="sel1">Twitter Url:</label>
+                    <input type="text" name="TwitterUrl" id="first-name" placeholder="" required="required" value="@Model.TwitterUrl" class="form-control ">
+                </div>
+            </div>
+
+            <div class="item form-group">
+                <div class="col-md-12 col-sm-12 ">
+                    <label for="sel1">Telefon Numarası:</label>
+                    <input type="text" name="Phone" id="first-name" placeholder="" required="required" value="@Model.Phone" class="form-control ">
+                </div>
+            </div>
+
+            <div class="item form-group">
+                <div class="col-md-12 col-sm-12 ">
+                    <input type="submit" class="btn btn-info btn-lg" value="Kaydet">
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+
